@@ -15,8 +15,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 # Load environment variables
-load_dotenv()
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+# load_dotenv()
+# GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+GROQ_API_KEY =st.secrets["GROQ_API_KEY"]
 
 # Configuration
 DATA_FILE = "market_data_history.csv"
@@ -435,4 +436,5 @@ if user_input := st.chat_input("Ask about prices (e.g., 'allo ka rate', 'multan 
         st.markdown(response)
         if results:
             if st.button("📊 Show Data Table", key="current_table"):
+
                 st.dataframe(df_results, use_container_width=True)
